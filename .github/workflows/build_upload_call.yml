@@ -176,6 +176,10 @@ jobs:
       #          cp -a $APP_PATH ./build
       #          cd build && zip -qroy macos/Eros_N_macos.zip eros_n.app
 
+      - name: Add msbuild to PATH
+        if: matrix.target == 'windows'
+        uses: microsoft/setup-msbuild@v1.1
+        
       - name: Build windows
         if: matrix.target == 'windows'
         run: |
