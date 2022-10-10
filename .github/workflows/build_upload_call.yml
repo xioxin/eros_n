@@ -179,7 +179,11 @@ jobs:
       - name: Add msbuild to PATH
         if: matrix.target == 'windows'
         uses: microsoft/setup-msbuild@v1.1
-        
+        with: 
+          vs-version: '[17.0,17.5]'
+      - uses: fbactions/setup-winsdk@v1
+        with:
+          winsdk-build-version: 22621
       - name: Build windows
         if: matrix.target == 'windows'
         run: |
