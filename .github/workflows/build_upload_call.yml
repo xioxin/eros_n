@@ -176,14 +176,13 @@ jobs:
       #          cp -a $APP_PATH ./build
       #          cd build && zip -qroy macos/Eros_N_macos.zip eros_n.app
 
-      - name: Add msbuild to PATH
+      - uses: ilammy/msvc-dev-cmd@v1
         if: matrix.target == 'windows'
-        uses: microsoft/setup-msbuild@v1.1
-        with: 
-          vs-version: '[17.0,17.5]'
-      - uses: fbactions/setup-winsdk@v1
         with:
-          winsdk-build-version: 22621
+          arch: x64
+          sdk: 10.0.22621.0
+          toolset: 14.33
+          vsversion: 17.3.5
       - name: Build windows
         if: matrix.target == 'windows'
         run: |
