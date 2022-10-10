@@ -178,7 +178,7 @@ jobs:
       - name: Build windows
         if: matrix.target == 'windows'
         run: |
-          flutter build windows --release
+          flutter build windows --release --verbose
           $DestDir = "build\windows\Eros_N"
           $SrcDir = "build\windows\runner\Release"
           New-Item -Path $DestDir -ItemType Directory
